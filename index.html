@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>A Question From My Heart</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+}
+
+/* floating hearts */
+.heart {
+    position: absolute;
+    color: rgba(255,255,255,0.5);
+    animation: float 9s linear infinite;
+}
+
+@keyframes float {
+    from { transform: translateY(110vh); opacity: 0; }
+    20% { opacity: 1; }
+    to { transform: translateY(-10vh); opacity: 0; }
+}
+
+.card {
+    background: #fff;
+    padding: 50px 60px;
+    border-radius: 22px;
+    box-shadow: 0 30px 90px rgba(0,0,0,0.18);
+    text-align: center;
+    max-width: 420px;
+    z-index: 2;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: #b71c1c;
+    margin-bottom: 12px;
+}
+
+p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 35px;
+}
+
+/* professional button stack */
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+}
+
+button {
+    border-radius: 999px;
+    border: 1px solid #b71c1c;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+/* YES button – dynamic sizing */
+#yesBtn {
+    padding: 14px 40px;
+    font-size: 15px;
+}
+
+/* NO button */
+#noBtn {
+    padding: 12px 34px;
+    font-size: 14px;
+}
+
+button:hover {
+    background: #b71c1c;
+    color: white;
+}
+
+#message {
+    margin-top: 22px;
+    font-size: 14px;
+    color: #b71c1c;
+}
+</style>
+</head>
+
+<body>
+
+<!-- hearts -->
+<script>
+for (let i = 0; i < 25; i++) {
+    const h = document.createElement("div");
+    h.className = "heart";
+    h.innerHTML = "❤";
+    h.style.left = Math.random() * 100 + "vw";
+    h.style.fontSize = (14 + Math.random() * 22) + "px";
+    h.style.animationDuration = (6 + Math.random() * 6) + "s";
+    h.style.animationDelay = Math.random() * 5 + "s";
+    document.body.appendChild(h);
+}
+</script>
+
+<div class="card">
+    <h1>Would you like to be my Valentine Taniya jii ?</h1>
+    <p>No pressure. Just something I wanted to ask honestly.</p>
+
+    <div class="buttons">
+        <button id="yesBtn" onclick="yes()">Yes</button>
+        <button id="noBtn" onclick="no()">No</button>
+    </div>
+
+    <div id="message"></div>
+</div>
+
+<script>
+let size = 15;
+
+function no() {
+    size += 6; // REAL size increase
+    const yes = document.getElementById("yesBtn");
+
+    yes.style.fontSize = size + "px";
+    yes.style.padding = "18px " + (40 + size) + "px";
+
+    document.getElementById("message").innerText =
+        "Think again… 🤍";
+}
+
+function yes() {
+    document.querySelector(".card").innerHTML =
+        "<h1>You just made my heart smile 💖</h1><p>Thank you for saying yes.</p>";
+}
+</script>
+
+</body>
+</html>
